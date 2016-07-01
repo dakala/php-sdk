@@ -77,10 +77,10 @@ class AccountService extends BaseService {
     public function getAccountInfo($accessToken) {
         $baseUrl = Config::get('endpoints.base_url') . Config::get('endpoints.account_info');
 
-        $request = parent::sendRequestWithoutBody($accessToken, 'GET', $baseUrl);
-
+//        $request = parent::sendRequestWithoutBody($accessToken, 'GET', $baseUrl);
         try {
-            $response = parent::getClient()->send($request);
+//            $response = parent::getClient()->send($request);
+            $response = parent::sendRequestWithoutBody($accessToken, 'GET', $baseUrl);
         } catch (TransferException $e) {
             throw parent::convertException($e);
         }
@@ -98,10 +98,11 @@ class AccountService extends BaseService {
     public function updateAccountInfo($accessToken, AccountInfo $accountInfo) {
         $baseUrl = Config::get('endpoints.base_url') . Config::get('endpoints.account_info');
 
-        $request = parent::sendRequestWithBody($accessToken, 'PUT', $baseUrl, $accountInfo);
+//        $request = parent::sendRequestWithBody($accessToken, 'PUT', $baseUrl, $accountInfo);
 
         try {
-            $response = parent::getClient()->send($request);
+//            $response = parent::getClient()->send($request);
+            $response = parent::sendRequestWithBody($accessToken, 'PUT', $baseUrl, $accountInfo);
         } catch (TransferException $e) {
             throw parent::convertException($e);
         }
